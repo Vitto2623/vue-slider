@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue Slider</title>
+</head>
+<body>
+    
+    <main>
+        <h1>Vue Slider</h1>
+        <div id="app">
+            <div class="carousel">
+                <div class="wrapper">
+                    <!--Immagine-sinistra-->
+                    <div class="container-left" v-for="(image, i) in images" :class="(i === activeImage) ? 'active': ''">
+                        <img :src="image.url" :alt="image.title">
+                        <div class="sub-title">
+                            <h2>{{image.title}}</h2>
+                            <h3>{{image.text}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <!--Immagini-thumbnails-di-destra-->
+                <div class="thumbnails-right">
+                    <button class="button-up" id="button-up" @click = "buttonUp()"><i class="fas fa-angle-up"></i></button>
+                    <!--Contenitore-immagini-->
+                    <div  class="my-container" v-for="(thumbnails, i) in images" :class="(i === activeImage) ? 'active': ''">
+                        <img :src="thumbnails.url" :alt="`Thumbnail di ${thumbnails.title}`" @click ="clickSlide(i)">
+                    </div>
+                    <button class="button-bottom" id="button-down" @click = "buttonBottom()"><i class="fas fa-angle-down"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
